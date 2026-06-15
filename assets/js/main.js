@@ -1,7 +1,6 @@
 /* OJ CLOTHINGS — MAIN JS */
 
 const WA = "https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20make%20an%20enquiry";
-const LOGO_SRC = "/assets/img/logo.jpg";
 
 /* ---- Page Transition ---- */
 const curtain = document.getElementById('curtain');
@@ -35,12 +34,12 @@ document.addEventListener('click', e=>{
 
 /* ---- Active Nav ---- */
 (function(){
-  const p = window.location.pathname.split('/').pop() || 'index.html';
+  const raw = window.location.pathname.split('/').pop();
+  const p = raw.replace(/\.html$/, '') || 'index';
   document.querySelectorAll('.nav-links a').forEach(a=>{
-    const h = (a.getAttribute('href')||'').split('/').pop();
-    if(h === p || (p==='' && h==='index.html') || (p==='index.html' && h==='')) {
-      a.classList.add('active');
-    }
+    const href = (a.getAttribute('href')||'').split('?')[0];
+    const h = href.split('/').pop().replace(/\.html$/,'') || 'index';
+    if(h === p) a.classList.add('active');
   });
 })();
 
