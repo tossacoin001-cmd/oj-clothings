@@ -11,42 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/global.css">
 <style>
-/* ---- Intro Splash ---- */
-#intro{
-  position:fixed;inset:0;z-index:2000;background:var(--obsidian);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
-  transition:opacity 1.2s var(--ease),visibility 1.2s var(--ease);
-}
-#intro.done{opacity:0;visibility:hidden;pointer-events:none}
-.intro-glow{
-  position:absolute;width:400px;height:400px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(198,166,103,.08) 0%,transparent 65%);
-  animation:glowPulse 2.8s ease-in-out .3s infinite alternate;
-}
-@keyframes glowPulse{from{opacity:.45;transform:scale(.9)}to{opacity:1;transform:scale(1.1)}}
-.intro-scene{position:relative;width:340px;height:340px;display:flex;align-items:center;justify-content:center}
-.intro-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.spiral-path{fill:none;stroke:var(--champagne);stroke-width:1.3;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(198,166,103,.5));animation:drawSpiral 2.2s cubic-bezier(.4,0,.2,1) .2s forwards}
-@keyframes drawSpiral{to{stroke-dashoffset:0}}
-.spiral-inner{fill:none;stroke:var(--champagne);stroke-width:.5;opacity:0;transform-box:fill-box;transform-origin:center;animation:ringFadeIn .6s ease 1.9s forwards,slowSpin 38s linear 2.5s infinite reverse}
-.spiral-outer{fill:none;stroke:var(--champagne);stroke-width:.7;stroke-dasharray:3 10;opacity:0;transform-box:fill-box;transform-origin:center;animation:ringFadeIn .7s ease 2s forwards,slowSpin 26s linear 2.7s infinite}
-@keyframes ringFadeIn{from{opacity:0}to{opacity:.28}}
-@keyframes slowSpin{to{transform:rotate(360deg)}}
-.cdot{opacity:0;transform-box:fill-box;transform-origin:center}
-.cdot:nth-of-type(1){animation:dotPop .35s var(--ease) 2.05s forwards}
-.cdot:nth-of-type(2){animation:dotPop .35s var(--ease) 2.18s forwards}
-.cdot:nth-of-type(3){animation:dotPop .35s var(--ease) 2.31s forwards}
-.cdot:nth-of-type(4){animation:dotPop .35s var(--ease) 2.44s forwards}
-@keyframes dotPop{0%{opacity:0;transform:scale(0)}65%{opacity:1;transform:scale(1.4)}100%{opacity:.75;transform:scale(1)}}
-.logo-halo{position:absolute;width:142px;height:142px;border-radius:50%;border:1px solid rgba(198,166,103,.3);opacity:0;transform:scale(.88);animation:haloIn .9s cubic-bezier(.22,.61,.36,1) 1.6s forwards}
-@keyframes haloIn{to{opacity:1;transform:scale(1)}}
-.intro-logo-img{width:118px;height:118px;border-radius:50%;object-fit:cover;opacity:0;transform:scale(.88);position:relative;z-index:2;animation:logoIn 1.3s cubic-bezier(.22,.61,.36,1) 1.3s forwards}
-@keyframes logoIn{to{opacity:1;transform:scale(1)}}
-.intro-brand{margin-top:38px;text-align:center;opacity:0;animation:brandIn 1s var(--ease) 2.4s forwards}
-@keyframes brandIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.intro-brand-name{font-family:var(--serif);font-style:italic;font-size:29px;letter-spacing:.03em;color:var(--bone);line-height:1}
-.intro-brand-tagline{font-size:10px;letter-spacing:.52em;text-transform:uppercase;color:var(--champagne);margin-top:10px}
-.intro-skip{position:absolute;bottom:34px;right:34px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;opacity:0;animation:brandIn .5s ease 3.1s forwards}
 
 /* ---- Hero ---- */
 .hero{min-height:100vh;position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
@@ -182,29 +146,6 @@
 <div id="progress-bar"></div>
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
-
-<!-- INTRO SPLASH -->
-<div id="intro">
-  <div class="intro-glow"></div>
-  <div class="intro-scene">
-    <svg class="intro-svg" id="introSvg" viewBox="0 0 340 340">
-      <path class="spiral-path" id="spiralPath"/>
-      <circle class="spiral-inner" cx="170" cy="170" r="66"/>
-      <circle class="spiral-outer" cx="170" cy="170" r="154"/>
-      <polygon class="cdot" points="170,8 174.5,17 170,26 165.5,17" fill="var(--champagne)"/>
-      <polygon class="cdot" points="332,170 323,174.5 314,170 323,165.5" fill="var(--champagne)"/>
-      <polygon class="cdot" points="170,332 174.5,323 170,314 165.5,323" fill="var(--champagne)"/>
-      <polygon class="cdot" points="8,170 17,174.5 26,170 17,165.5" fill="var(--champagne)"/>
-    </svg>
-    <div class="logo-halo"></div>
-    <img class="intro-logo-img" src="assets/img/logo.jpg" alt="OJ Clothings">
-  </div>
-  <div class="intro-brand">
-    <div class="intro-brand-name">OJ Clothings</div>
-    <div class="intro-brand-tagline">Heritage &middot; Tailored</div>
-  </div>
-  <button class="intro-skip" onclick="endIntro()">Skip</button>
-</div>
 
 <!-- NAV -->
 <header class="nav" id="nav">
@@ -530,31 +471,6 @@
   <a href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20book%20a%20fitting" target="_blank" class="btn btn-solid mob-wa">Book a Fitting</a>
 </div>
 
-<script>
-(function(){
-  /* Skip intro if already visited this session */
-  const visited = sessionStorage.getItem('oj-v');
-  const intro = document.getElementById('intro');
-  if(visited){
-    intro.style.display='none';
-  } else {
-    sessionStorage.setItem('oj-v','1');
-    /* draw spiral */
-    var p=document.getElementById('spiralPath');
-    if(p){
-      var cx=170,cy=170,r0=22,r1=138,turns=2.65,steps=320,d='';
-      for(var i=0;i<=steps;i++){var t=i/steps,a=-Math.PI/2+t*turns*2*Math.PI,r=r0+(r1-r0)*t;d+=(i===0?'M':'L')+(cx+r*Math.cos(a)).toFixed(2)+','+(cy+r*Math.sin(a)).toFixed(2);}
-      p.setAttribute('d',d);var len=p.getTotalLength();p.style.strokeDasharray=len;p.style.strokeDashoffset=len;
-    }
-    setTimeout(endIntro, 3600);
-  }
-  function endIntro(){
-    if(intro) intro.classList.add('done');
-    setTimeout(()=>{ if(intro) intro.style.display='none'; },1300);
-  }
-  window.endIntro = endIntro;
-})();
-</script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -3,22 +3,12 @@
 const WA = "https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20make%20an%20enquiry";
 
 /* ---- Page Transition ---- */
-const curtain = document.getElementById('curtain');
-
-function showPage(){
-  requestAnimationFrame(()=>{
-    document.body.classList.add('ready');
-    curtain && curtain.classList.add('gone');
-  });
-}
-
 function goTo(href){
-  if(curtain){ curtain.classList.remove('gone'); }
-  document.body.classList.remove('ready');
-  setTimeout(()=>{ window.location.href = href; }, 520);
+  const c = document.getElementById('curtain');
+  if(c) c.classList.add('active');
+  document.body.classList.add('page-out');
+  setTimeout(()=>{ window.location.href = href; }, 450);
 }
-
-window.addEventListener('DOMContentLoaded', showPage);
 
 document.addEventListener('click', e=>{
   const a = e.target.closest('a[href]');
