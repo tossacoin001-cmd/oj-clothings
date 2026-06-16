@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Careers — OJ Clothings</title>
+<meta name="description" content="Join OJ Clothings — modern luxury native wear, Lekki, Lagos. We're always watching for exceptional creative and craft talent.">
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<style>
+/* ---- No Openings Notice ---- */
+.no-roles{
+  border:1px solid var(--line);background:var(--obsidian-2);
+  padding:clamp(40px,6vw,70px);text-align:center;
+}
+.no-roles .icon{font-size:30px;color:var(--champagne);margin-bottom:20px}
+.no-roles h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,36px);font-weight:400;margin-bottom:14px}
+.no-roles p{font-size:14.5px;color:var(--bone-dim);line-height:1.8;max-width:560px;margin:0 auto}
+.no-roles .soon{
+  display:inline-block;margin-top:24px;font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--champagne);border:1px solid rgba(198,166,103,.3);
+  padding:8px 14px;
+}
+
+/* ---- What We Look For ---- */
+.look-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:60px}
+.look-item{background:var(--obsidian);padding:36px 26px;transition:.4s var(--ease)}
+.look-item:hover{background:var(--charcoal)}
+.look-item .ln{font-family:var(--serif);font-size:38px;color:rgba(198,166,103,.18);line-height:1;margin-bottom:14px}
+.look-item h4{font-family:var(--serif);font-size:20px;margin-bottom:8px}
+.look-item p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ---- Introduce Yourself ---- */
+.intro-block{
+  margin-top:80px;border-top:1px solid var(--line);padding-top:60px;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;
+}
+.intro-block h3{font-family:var(--serif);font-size:clamp(28px,3.4vw,38px);font-weight:400;margin-bottom:16px}
+.intro-block p{font-size:14.5px;color:var(--bone-dim);line-height:1.8;max-width:460px}
+.intro-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+.intro-side{border:1px solid var(--line);padding:32px;background:var(--obsidian-2)}
+.intro-side h4{font-family:var(--serif);font-size:18px;margin-bottom:14px}
+.intro-side ul{font-size:13px;color:var(--bone-dim);line-height:2.1;list-style:none}
+.intro-side ul li::before{content:'— ';color:var(--champagne)}
+
+@media(max-width:900px){
+  .look-grid{grid-template-columns:repeat(2,1fr)}
+  .intro-block{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .look-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="curtain"></div>
+<div id="progress-bar"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<header class="nav" id="nav">
+  <a class="nav-logo" href="index.html">
+    <img src="assets/img/logo.jpg" alt="OJ Clothings" class="logo-img loaded">
+    <span class="name">OJ Clothings</span>
+  </a>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="made-to-measure.html">Made-to-Measure</a></li>
+      <li><a href="stores.html">Our Stores</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <span class="nav-ship">Ships Worldwide</span>
+    <span class="nav-icon" onclick="openOJ()">&#x2315;</span>
+    <span class="nav-icon" onclick="toggleTheme()">&#x25D1;</span>
+    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="page-hero" style="min-height:56vh">
+  <div class="wrap">
+    <span class="eyebrow">Careers</span>
+    <h1 class="display" style="font-size:clamp(40px,7vw,90px)">Build the house<br>of <em style="color:var(--champagne-soft)">OJ.</em></h1>
+    <p class="lead" style="max-width:540px;margin-top:18px">We're a small, exacting team obsessed with craft. When the right opportunity opens, we want the right person already watching.</p>
+    <div class="page-hero-line"></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="no-roles reveal">
+      <div class="icon">&#x2726;</div>
+      <h2>No open roles right now.</h2>
+      <p>We don't hire often, and when we do, it's because we've found someone whose standards match ours. There's nothing available this moment — but we're always quietly watching for creative minds and growth-minded builders who want to shape a Nigerian luxury brand from the inside.</p>
+      <span class="soon">Opportunities update soon</span>
+    </div>
+
+    <div class="look-grid">
+      <div class="look-item reveal">
+        <div class="ln">01</div>
+        <h4>Craft</h4>
+        <p>An obsession with fabric, fit, and finish — the kind that notices a stitch out of place.</p>
+      </div>
+      <div class="look-item reveal">
+        <div class="ln">02</div>
+        <h4>Creative Ambition</h4>
+        <p>People who see Nigerian heritage as a starting point, not a limit, for what luxury can look like.</p>
+      </div>
+      <div class="look-item reveal">
+        <div class="ln">03</div>
+        <h4>Growth Mindset</h4>
+        <p>Comfortable building before there's a playbook. We're still writing ours.</p>
+      </div>
+      <div class="look-item reveal">
+        <div class="ln">04</div>
+        <h4>Integrity</h4>
+        <p>Every piece carries our name. We move slowly enough to never compromise on that.</p>
+      </div>
+    </div>
+
+    <div class="intro-block">
+      <div class="reveal-left">
+        <h3>Introduce yourself anyway.</h3>
+        <p>If you believe you'd be a future fit — design, tailoring, retail, or otherwise — send us a note. We keep every introduction on file for when the right seat opens.</p>
+        <div class="intro-actions">
+          <a href="mailto:info@ojclothing.com?subject=Career%20Interest%20%E2%80%94%20OJ%20Clothings" class="btn btn-solid">Email Us</a>
+          <a href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27m%20interested%20in%20future%20career%20opportunities" target="_blank" class="btn btn-ghost">Message on WhatsApp</a>
+        </div>
+      </div>
+      <div class="intro-side reveal-right">
+        <h4>What to include</h4>
+        <ul>
+          <li>A short note on why OJ</li>
+          <li>Your CV or portfolio link</li>
+          <li>The kind of role you're drawn to</li>
+          <li>Lekki, Lagos based or remote-open</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="assets/img/logo.jpg" alt="OJ" class="logo-img loaded"><span class="name">OJ Clothings</span></div>
+        <p class="foot-desc">Modern luxury native wear. Lekki, Lagos. Shipping worldwide.</p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/o.j_clothing/" target="_blank">Instagram</a>
+          <a href="https://www.tiktok.com/@oj_clothings" target="_blank">TikTok</a>
+        </div>
+      </div>
+      <div class="foot"><h4>Shop</h4><ul>
+        <li><a href="collections.html?cat=agbada">Agbada</a></li>
+        <li><a href="collections.html?cat=jalabia">Jalabia</a></li>
+        <li><a href="collections.html?cat=kaftan">Kaftans</a></li>
+        <li><a href="collections.html?cat=suits">Suits</a></li>
+        <li><a href="made-to-measure.html">Made-to-Measure</a></li>
+      </ul></div>
+      <div class="foot"><h4>Help</h4><ul>
+        <li><a href="https://wa.me/2349167728000" target="_blank">WhatsApp</a></li>
+        <li><a href="stores.html">Our Stores</a></li>
+        <li><a href="mailto:info@ojclothing.com">info@ojclothing.com</a></li>
+      </ul></div>
+      <div class="foot"><h4>Navigate</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About OJ</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="stores.html">Stores</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2026 OJ Clothings. All rights reserved.</p>
+      <p>Lekki, Lagos &middot; Nigeria &middot; &#x2708; Ships Worldwide</p>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-cluster">
+  <a class="fab fab-wa" href="https://wa.me/2349167728000" target="_blank">
+    <div class="lbl">Chat on WhatsApp</div>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <div class="fab fab-oj" onclick="openOJ()"><div class="lbl">OJ Concierge</div><img src="assets/img/logo.jpg" alt="OJ"></div>
+</div>
+
+<div class="oj-panel">
+  <div class="oj-head">
+    <div class="av"><img src="assets/img/logo.jpg" alt="OJ"></div>
+    <div><div class="nm">OJ Concierge</div><div class="st">Online · Ready to assist</div></div>
+    <button class="x" onclick="closeOJ()">&#x2715;</button>
+  </div>
+  <div class="oj-body"><div class="msg oj">Looking to join OJ Clothings? There are no open roles right now, but I can point you to how to introduce yourself for the future.</div></div>
+  <div class="oj-chips">
+    <button class="chip" onclick="askOJ('How do I apply for a job at OJ Clothings?')">How to apply</button>
+    <button class="chip" onclick="askOJ('What is OJ Clothings?')">About OJ</button>
+    <button class="chip" onclick="askOJ('Where are your stores?')">Stores</button>
+  </div>
+  <div class="oj-input"><input type="text" placeholder="Ask anything…"><button onclick="sendOJ()">Send</button></div>
+  <p class="oj-note"><a href="https://wa.me/2349167728000" target="_blank">Chat our team on WhatsApp</a>.</p>
+</div>
+
+<div class="mob-overlay"></div>
+<div class="mob-nav">
+  <button class="mob-close">&#x2715;</button>
+  <ul>
+    <li><a href="collections.html">Collections</a></li>
+    <li><a href="made-to-measure.html">Made-to-Measure</a></li>
+    <li><a href="stores.html">Our Stores</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="https://wa.me/2349167728000" target="_blank" class="btn btn-solid mob-wa">Book a Fitting</a>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

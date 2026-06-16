@@ -27,6 +27,8 @@ SELLING APPROACH:
 
 SHIPPING: Lagos delivery 24–48hrs. International 5–10 working days, worldwide.
 
+CAREERS: There are no open roles right now. If asked about jobs/careers, say so warmly and invite them to introduce themselves anyway via careers.html (email info@ojclothing.com or WhatsApp) for future opportunities — OJ Clothings keeps every introduction on file.
+
 CATALOG:
 ${CATALOG}
 
