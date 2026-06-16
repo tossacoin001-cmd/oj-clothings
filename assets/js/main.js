@@ -143,7 +143,7 @@ function getReply(msg){
   if(/store|location|where|address/.test(m)) return 'Two Lekki stores: Admiralty Mall (Lekki Phase 1) and Ikota Shopping Complex (VGC). Both open Mon–Sat, 9am–7pm.';
   if(/ship|deliver|worldwide/.test(m)) return 'Yes — we ship worldwide. Lagos delivery: 24–48hrs. International: 5–10 working days. Every piece is carefully packaged.';
   if(/fitting|measure|mtm|custom|bespoke/.test(m)) return 'We offer in-store fittings at both Lekki locations and virtual measurements via WhatsApp. Our tailor will guide you through every detail.';
-  if(/order|buy|purchase/.test(m)) return 'To place an order, chat our team on WhatsApp. We'll confirm your measurements, fabric choice, and timeline personally.';
+  if(/order|buy|purchase/.test(m)) return "To place an order, chat our team on WhatsApp. We'll confirm your measurements, fabric choice, and timeline personally.";
   return 'Thank you for reaching out to OJ Clothings. Our team can assist with collections, sizing, and bespoke orders. For immediate help, chat us on WhatsApp — we respond within minutes.';
 }
 function sendOJ(){
