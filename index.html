@@ -12,6 +12,56 @@
 <link rel="stylesheet" href="assets/css/global.css">
 <style>
 
+/* ---- Intro Splash ----
+   Pure-CSS timed reveal: every animation here runs from page-load with
+   fixed delays/durations, so the splash always completes and hides
+   itself even if JS never runs. JS only adds an optional instant skip. */
+#intro{
+  position:fixed;inset:0;z-index:2000;background:var(--obsidian);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  opacity:1;visibility:visible;
+  animation:introHide .9s var(--ease) 3.5s forwards;
+}
+#intro.skip-now{animation:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s ease}
+@keyframes introHide{to{opacity:0;visibility:hidden;pointer-events:none}}
+.intro-glow{
+  position:absolute;width:400px;height:400px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(198,166,103,.08) 0%,transparent 65%);
+  animation:glowPulse 2.8s ease-in-out .3s infinite alternate;
+}
+@keyframes glowPulse{from{opacity:.45;transform:scale(.9)}to{opacity:1;transform:scale(1.1)}}
+.intro-scene{position:relative;width:340px;height:340px;display:flex;align-items:center;justify-content:center}
+.intro-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.spiral-path{
+  fill:none;stroke:var(--champagne);stroke-width:1.3;stroke-linecap:round;
+  filter:drop-shadow(0 0 5px rgba(198,166,103,.5));
+  stroke-dasharray:1340;stroke-dashoffset:1340;
+  animation:drawSpiral 2.2s cubic-bezier(.4,0,.2,1) .2s forwards;
+}
+@keyframes drawSpiral{to{stroke-dashoffset:0}}
+.spiral-inner{fill:none;stroke:var(--champagne);stroke-width:.5;opacity:0;transform-box:fill-box;transform-origin:center;animation:ringFadeIn .6s ease 1.9s forwards,slowSpin 38s linear 2.5s infinite reverse}
+.spiral-outer{fill:none;stroke:var(--champagne);stroke-width:.7;stroke-dasharray:3 10;opacity:0;transform-box:fill-box;transform-origin:center;animation:ringFadeIn .7s ease 2s forwards,slowSpin 26s linear 2.7s infinite}
+@keyframes ringFadeIn{from{opacity:0}to{opacity:.28}}
+@keyframes slowSpin{to{transform:rotate(360deg)}}
+.cdot{opacity:0;transform-box:fill-box;transform-origin:center}
+.cdot:nth-of-type(1){animation:dotPop .35s var(--ease) 2.05s forwards}
+.cdot:nth-of-type(2){animation:dotPop .35s var(--ease) 2.18s forwards}
+.cdot:nth-of-type(3){animation:dotPop .35s var(--ease) 2.31s forwards}
+.cdot:nth-of-type(4){animation:dotPop .35s var(--ease) 2.44s forwards}
+@keyframes dotPop{0%{opacity:0;transform:scale(0)}65%{opacity:1;transform:scale(1.4)}100%{opacity:.75;transform:scale(1)}}
+.logo-halo{position:absolute;width:142px;height:142px;border-radius:50%;border:1px solid rgba(198,166,103,.3);opacity:0;transform:scale(.88);animation:haloIn .9s cubic-bezier(.22,.61,.36,1) 1.6s forwards}
+@keyframes haloIn{to{opacity:1;transform:scale(1)}}
+.intro-logo-img{width:118px;height:118px;border-radius:50%;object-fit:cover;opacity:0;transform:scale(.88);position:relative;z-index:2;animation:logoIn 1.3s cubic-bezier(.22,.61,.36,1) 1.3s forwards}
+@keyframes logoIn{to{opacity:1;transform:scale(1)}}
+.intro-brand{margin-top:38px;text-align:center;opacity:0;animation:brandIn 1s var(--ease) 2.4s forwards}
+@keyframes brandIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.intro-brand-name{font-family:var(--serif);font-style:italic;font-size:29px;letter-spacing:.03em;color:var(--bone);line-height:1}
+.intro-brand-tagline{font-size:10px;letter-spacing:.52em;text-transform:uppercase;color:var(--champagne);margin-top:10px}
+.intro-skip{position:absolute;bottom:34px;right:34px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;opacity:0;animation:brandIn .5s ease 3.1s forwards}
+@media(prefers-reduced-motion:reduce){
+  #intro{display:none}
+}
+
 /* ---- Hero ---- */
 .hero{min-height:100vh;position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
 .hero-content{
@@ -146,6 +196,29 @@
 <div id="progress-bar"></div>
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
+
+<!-- INTRO SPLASH — pure CSS, auto-completes with or without JS -->
+<div id="intro">
+  <div class="intro-glow"></div>
+  <div class="intro-scene">
+    <svg class="intro-svg" viewBox="0 0 340 340">
+      <path class="spiral-path" d="M170.00,148.00L171.16,147.67L172.36,147.40L173.59,147.19L174.85,147.06L176.13,146.99L177.43,146.99L178.74,147.07L180.07,147.23L181.40,147.46L182.74,147.77L184.08,148.15L185.40,148.62L186.72,149.17L188.02,149.80L189.31,150.50L190.56,151.29L191.79,152.16L192.98,153.10L194.13,154.12L195.23,155.21L196.29,156.38L197.30,157.61L198.24,158.92L199.12,160.28L199.94,161.72L200.68,163.21L201.35,164.75L201.94,166.35L202.45,167.99L202.87,169.68L203.21,171.40L203.45,173.16L203.60,174.95L203.65,176.76L203.61,178.59L203.46,180.44L203.21,182.29L202.86,184.14L202.41,185.99L201.85,187.83L201.18,189.66L200.41,191.46L199.54,193.24L198.57,194.98L197.49,196.69L196.31,198.35L195.03,199.96L193.66,201.51L192.19,203.00L190.63,204.42L188.98,205.76L187.25,207.03L185.43,208.21L183.54,209.31L181.58,210.31L179.55,211.21L177.46,212.01L175.31,212.70L173.11,213.28L170.86,213.74L168.57,214.09L166.25,214.32L163.90,214.42L161.53,214.40L159.15,214.25L156.75,213.97L154.36,213.57L151.98,213.03L149.61,212.36L147.26,211.56L144.94,210.63L142.65,209.57L140.41,208.38L138.22,207.06L136.08,205.62L134.01,204.06L132.01,202.38L130.09,200.58L128.26,198.67L126.52,196.65L124.87,194.52L123.33,192.30L121.90,189.98L120.58,187.57L119.39,185.08L118.32,182.51L117.38,179.88L116.58,177.18L115.92,174.42L115.40,171.61L115.03,168.76L114.80,165.87L114.73,162.96L114.82,160.03L115.06,157.09L115.46,154.15L116.01,151.22L116.73,148.30L117.60,145.40L118.63,142.54L119.82,139.72L121.16,136.95L122.65,134.23L124.30,131.59L126.10,129.01L128.03,126.52L130.11,124.13L132.33,121.83L134.68,119.64L137.15,117.56L139.75,115.61L142.46,113.78L145.28,112.09L148.20,110.55L151.21,109.15L154.32,107.90L157.50,106.81L160.75,105.89L164.06,105.13L167.43,104.55L170.84,104.14L174.29,103.91L177.76,103.87L181.25,104.00L184.75,104.32L188.24,104.83L191.72,105.52L195.18,106.40L198.60,107.47L201.99,108.72L205.31,110.15L208.58,111.77L211.77,113.56L214.88,115.53L217.90,117.67L220.81,119.98L223.62,122.45L226.30,125.08L228.85,127.86L231.27,130.78L233.54,133.84L235.66,137.03L237.62,140.34L239.41,143.77L241.03,147.31L242.46,150.94L243.71,154.66L244.76,158.46L245.62,162.33L246.28,166.25L246.74,170.23L246.98,174.24L247.02,178.27L246.84,182.33L246.45,186.38L245.85,190.43L245.03,194.46L243.99,198.46L242.74,202.42L241.28,206.32L239.61,210.16L237.73,213.92L235.65,217.60L233.37,221.18L230.89,224.64L228.22,227.99L225.37,231.21L222.34,234.29L219.14,237.22L215.77,239.98L212.26,242.58L208.59,245.01L204.78,247.24L200.85,249.28L196.80,251.13L192.64,252.76L188.38,254.18L184.04,255.38L179.62,256.35L175.14,257.10L170.60,257.61L166.03,257.89L161.43,257.92L156.81,257.71L152.20,257.26L147.59,256.57L143.01,255.63L138.47,254.45L133.97,253.03L129.54,251.37L125.19,249.47L120.92,247.34L116.75,244.98L112.70,242.39L108.77,239.59L104.98,236.57L101.34,233.34L97.86,229.92L94.55,226.30L91.43,222.50L88.49,218.53L85.76,214.39L83.23,210.10L80.93,205.67L78.85,201.11L77.01,196.42L75.40,191.63L74.05,186.75L72.95,181.78L72.11,176.74L71.53,171.64L71.21,166.51L71.17,161.34L71.39,156.16L71.89,150.98L72.66,145.82L73.70,140.68L75.01,135.59L76.60,130.56L78.45,125.60L80.57,120.72L82.94,115.94L85.57,111.28L88.46,106.75L91.58,102.36L94.94,98.12L98.54,94.05L102.35,90.16L106.37,86.46L110.60,82.96L115.02,79.68L119.62,76.63L124.39,73.80L129.31,71.23L134.39,68.90L139.59,66.84L144.91,65.04L150.34,63.53L155.86,62.29L161.45,61.34L167.10,60.68L172.80,60.31L178.53,60.24L184.27,60.48L190.02,61.01L195.74,61.85L201.43,62.98L207.08,64.42L212.66,66.16L218.15,68.19L223.56,70.51L228.85,73.12L234.01,76.01L239.03,79.18L243.89,82.62L248.59,86.31L253.09,90.26L257.40,94.46L261.50,98.88L265.37,103.53L269.01,108.39L272.40,113.45L275.52,118.69L278.38,124.11L280.96,129.68L283.26,135.40L285.26,141.25L286.95,147.21L288.34,153.28L289.41,159.42L290.16,165.63L290.59,171.89L290.69,178.19L290.46,184.50L289.90,190.80L289.01,197.09L287.78,203.34L286.23,209.54L284.36,215.67L282.16,221.70L279.64,227.64L276.80,233.45L273.66,239.12L270.21,244.63L266.48,249.97L262.45,255.13L258.15,260.08L253.59,264.81L248.77,269.32L243.71,273.57L238.42,277.57L232.91,281.30L227.20,284.75L221.29,287.90L215.22,290.75L208.99,293.28L202.62,295.49L196.12,297.37L189.51,298.92L182.82,300.12L176.05,300.97L169.23,301.47L162.37,301.62L155.49,301.40L148.62,300.83L141.77,299.89L134.96,298.60L128.20,296.95L121.52,294.94L114.94,292.58L108.48,289.87L102.14,286.82L95.96,283.44L89.95,279.73L84.12,275.70L78.50,271.36L73.09,266.72L67.92,261.79L63.01,256.58L58.36,251.11"/>
+      <circle class="spiral-inner" cx="170" cy="170" r="66"/>
+      <circle class="spiral-outer" cx="170" cy="170" r="154"/>
+      <polygon class="cdot" points="170,8 174.5,17 170,26 165.5,17" fill="var(--champagne)"/>
+      <polygon class="cdot" points="332,170 323,174.5 314,170 323,165.5" fill="var(--champagne)"/>
+      <polygon class="cdot" points="170,332 174.5,323 170,314 165.5,323" fill="var(--champagne)"/>
+      <polygon class="cdot" points="8,170 17,174.5 26,170 17,165.5" fill="var(--champagne)"/>
+    </svg>
+    <div class="logo-halo"></div>
+    <img class="intro-logo-img" src="assets/img/logo.jpg" alt="OJ Clothings">
+  </div>
+  <div class="intro-brand">
+    <div class="intro-brand-name">OJ Clothings</div>
+    <div class="intro-brand-tagline">Heritage &middot; Tailored</div>
+  </div>
+  <button class="intro-skip" onclick="skipIntro()">Skip</button>
+</div>
 
 <!-- NAV -->
 <header class="nav" id="nav">

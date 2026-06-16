@@ -2,6 +2,19 @@
 
 const WA = "https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20make%20an%20enquiry";
 
+/* ---- Intro Splash (progressive enhancement only — the splash is
+   pure CSS and always completes itself even if this never runs) ---- */
+function skipIntro(){
+  document.getElementById('intro')?.classList.add('skip-now');
+  try{ sessionStorage.setItem('oj-intro-seen','1'); }catch(e){}
+}
+(function(){
+  try{
+    if(sessionStorage.getItem('oj-intro-seen')) skipIntro();
+    else sessionStorage.setItem('oj-intro-seen','1');
+  }catch(e){}
+})();
+
 /* ---- Page Transition ---- */
 function goTo(href){
   const c = document.getElementById('curtain');
