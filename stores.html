@@ -24,10 +24,20 @@
   color:var(--champagne);background:rgba(10,10,11,.7);
   border:1px solid rgba(198,166,103,.3);padding:7px 12px;z-index:1;
 }
-.store-img .loc-icon{
-  position:absolute;right:20px;bottom:20px;
-  font-size:32px;color:rgba(198,166,103,.2);
+.store-loc-overlay{
+  position:absolute;left:18px;bottom:18px;z-index:2;
+  max-width:74%;display:flex;align-items:center;gap:14px;
+  background:rgba(10,10,11,.6);backdrop-filter:blur(8px);
+  border:1px solid rgba(198,166,103,.3);padding:13px 16px;
 }
+.store-loc-overlay .addr-mini{font-size:12px;color:var(--bone-dim);line-height:1.5}
+.store-loc-overlay .addr-mini b{color:var(--bone);font-weight:500;display:block;font-size:13px;margin-bottom:2px}
+.store-loc-overlay a{
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--champagne);white-space:nowrap;flex-shrink:0;
+  display:flex;align-items:center;gap:5px;transition:.3s;
+}
+.store-loc-overlay a:hover{color:var(--champagne-soft)}
 .store-body{padding:32px}
 .store-body h3{font-family:var(--serif);font-size:26px;margin-bottom:12px}
 .store-body .addr{font-size:14px;color:var(--bone-dim);line-height:1.7;margin-bottom:20px}
@@ -54,6 +64,7 @@
 @media(max-width:768px){
   .stores-grid{grid-template-columns:1fr}
   .visit-grid{grid-template-columns:1fr}
+  .store-loc-overlay{max-width:calc(100% - 36px);flex-direction:column;align-items:flex-start;gap:8px}
 }
 </style>
 </head>
@@ -101,7 +112,10 @@
       <div class="store-card reveal-left">
         <div class="store-img">
           <div class="badge">&#x2605; Flagship</div>
-          <div class="loc-icon">&#x25CE;</div>
+          <div class="store-loc-overlay">
+            <div class="addr-mini"><b>Admiralty Mall</b>Lekki Phase 1, Lagos</div>
+            <a href="https://maps.google.com/?q=Admiralty+Mall+Lekki+Phase+1+Lagos" target="_blank">Directions &#x2197;</a>
+          </div>
         </div>
         <div class="store-body">
           <h3>Admiralty Mall</h3>
@@ -125,7 +139,10 @@
       <div class="store-card reveal-right">
         <div class="store-img" style="background:radial-gradient(140% 120% at 60% 40%,#262630,#0c0c0f)">
           <div class="badge">VGC</div>
-          <div class="loc-icon">&#x25CE;</div>
+          <div class="store-loc-overlay">
+            <div class="addr-mini"><b>Ikota Shopping Complex</b>Victoria Garden City, Lagos</div>
+            <a href="https://maps.google.com/?q=Ikota+Shopping+Complex+VGC+Lagos" target="_blank">Directions &#x2197;</a>
+          </div>
         </div>
         <div class="store-body">
           <h3>Ikota Shopping Complex</h3>
