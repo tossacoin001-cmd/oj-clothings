@@ -108,6 +108,9 @@ function toggleTheme(){
 if(localStorage.getItem('oj-theme')==='light') document.body.classList.add('light');
 
 /* ---- OJ Concierge ---- */
+const ojHistory = [];
+let ojCurrentProduct = null;
+
 function openOJ(){
   const p = document.querySelector('.oj-panel');
   const f = document.querySelector('.fab-cluster');
@@ -121,17 +124,46 @@ function closeOJ(){
   if(p) p.classList.remove('open');
   if(f) f.style.removeProperty('opacity');
 }
-function askOJ(msg){
-  openOJ();
-  addMsg(msg,'me');
-  setTimeout(()=> addMsg(getReply(msg),'oj'), 750);
-}
 function addMsg(text,from){
   const body = document.querySelector('.oj-body');
   if(!body) return;
   const d = document.createElement('div');
   d.className='msg '+from; d.textContent=text;
   body.appendChild(d); body.scrollTop=body.scrollHeight;
+  return d;
+}
+function addTyping(){
+  const body = document.querySelector('.oj-body');
+  if(!body) return null;
+  const d = document.createElement('div');
+  d.className='msg oj pm-typing-msg';
+  d.innerHTML = '<div class="pm-typing"><span></span><span></span><span></span></div>';
+  body.appendChild(d); body.scrollTop=body.scrollHeight;
+  return d;
+}
+async function askOJ(msg){
+  openOJ();
+  addMsg(msg,'me');
+  ojHistory.push({role:'me', content: msg});
+  const typing = addTyping();
+  try{
+    const res = await fetch('/api/oj', {
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body: JSON.stringify({ messages: ojHistory, product: ojCurrentProduct }),
+    });
+    if(!res.ok) throw new Error('bad status');
+    const data = await res.json();
+    typing?.remove();
+    const reply = data.reply || getReply(msg);
+    addMsg(reply,'oj');
+    ojHistory.push({role:'oj', content: reply});
+  }catch(err){
+    typing?.remove();
+    const reply = getReply(msg);
+    addMsg(reply,'oj');
+    ojHistory.push({role:'oj', content: reply});
+  }
 }
 function getReply(msg){
   const m = msg.toLowerCase();
@@ -162,4 +194,177 @@ function filterProducts(cat){
     if(show) setTimeout(()=> p.classList.add('in'),10);
     else p.classList.remove('in');
   });
+}
+
+/* ================================================================
+   PRODUCT DETAIL MODAL — opens alongside OJ, never replaces it
+   ================================================================ */
+const PRODUCT_COPY = {
+  'agbada-blue': {
+    fabric: '<b>Fabric:</b> premium damask & aso-oke, hand-embroidered satin trim.',
+    desc: 'A statement ceremonial agbada — heavy, lustrous drape with hand-embroidery across the chest. Built for owambe, weddings, and the moments you want to be remembered in.',
+    sizes: ['S','M','L','XL','XXL','Custom'],
+  },
+  'obsidian-agbada': {
+    fabric: '<b>Fabric:</b> matte obsidian weave, structured shoulder.',
+    desc: 'Agbada without the shine — a deep matte black weave with a structured, modern silhouette. Quiet luxury for the man who doesn’t need to shout.',
+    sizes: ['S','M','L','XL','XXL','Custom'],
+  },
+  'jalabia-ivory': {
+    fabric: '<b>Fabric:</b> featherweight ivory cotton-blend, hand-finished collar.',
+    desc: 'Heritage Al-Turath jalabia, refined for daily wear. Breathable, light against the skin, with a hand-finished collar that holds its shape all day.',
+    sizes: ['S','M','L','XL','XXL'],
+  },
+  'al-turath-collection': {
+    fabric: '<b>Fabric:</b> your choice of premium cotton, linen, or silk-blend.',
+    desc: 'Custom Al-Turath jalabia, cut to your exact measurements. Pure heritage tailoring, modern fit — built piece by piece for you.',
+    sizes: ['Custom'],
+  },
+  'sahel-kaftan': {
+    fabric: '<b>Fabric:</b> relaxed linen-cotton weave.',
+    desc: 'The easiest entry point into the OJ wardrobe — a breathable two-piece kaftan built for everyday elegance, not just special occasions.',
+    sizes: ['S','M','L','XL','XXL'],
+  },
+  'kembe-classic': {
+    fabric: '<b>Fabric:</b> tailored in your choice of fabric.',
+    desc: 'A made-to-measure kaftan set, fitted for comfort and quiet refinement. Every seam built around your frame.',
+    sizes: ['Custom'],
+  },
+  'suede-suit': {
+    fabric: '<b>Fabric:</b> genuine suede, soft hand-feel.',
+    desc: 'Bold, rare, unmistakably premium. Genuine suede with structured tailoring — limited runs, made for the man who wants to stand apart.',
+    sizes: ['S','M','L','XL','XXL'],
+  },
+  'signature-suit': {
+    fabric: '<b>Fabric:</b> finest wool blend, full canvas construction.',
+    desc: 'OJ’s flagship tailored suit. Full canvas construction, hand-finished buttonholes — built to outlast trends.',
+    sizes: ['S','M','L','XL','XXL','Custom'],
+  },
+  'onyx-suit': {
+    fabric: '<b>Fabric:</b> deep onyx-tone wool blend.',
+    desc: 'Sharp, modern, made-to-measure. A precise silhouette in deep onyx tones for the man who means business.',
+    sizes: ['Custom'],
+  },
+};
+
+function injectProductModal(){
+  if(document.querySelector('.pm-overlay')) return;
+  const ov = document.createElement('div');
+  ov.className = 'pm-overlay';
+  ov.innerHTML = `
+    <div class="product-modal">
+      <button class="pm-close" onclick="closeProductModal()">&#x2715;</button>
+      <div class="pm-img"><img alt=""></div>
+      <div class="pm-body">
+        <div class="pm-tag"></div>
+        <div class="pm-name"></div>
+        <div class="pm-price"></div>
+        <div class="pm-desc"></div>
+        <div class="pm-fabric"></div>
+        <div>
+          <div class="pm-label" style="margin-bottom:10px">Size</div>
+          <div class="pm-sizes"></div>
+        </div>
+        <div class="pm-ctas">
+          <button class="btn btn-solid pm-wa-btn">Reserve via WhatsApp</button>
+          <a href="made-to-measure.html" class="btn btn-ghost">Book a Fitting</a>
+          <button class="pm-ask-oj" onclick="askOJAboutProduct()">
+            <img src="assets/img/logo.jpg" alt="OJ"> Ask OJ about this piece
+          </button>
+        </div>
+        <div class="pm-measure">
+          <button class="pm-measure-toggle" onclick="toggleMeasureForm()">+ Send My Measurements</button>
+          <div class="pm-measure-form">
+            <div class="pm-measure-grid">
+              <input type="text" id="pmHeight" placeholder="Height (cm)">
+              <input type="text" id="pmChest" placeholder="Chest (cm)">
+              <input type="text" id="pmWaist" placeholder="Waist (cm)">
+              <input type="text" id="pmShoulder" placeholder="Shoulder (cm)">
+              <textarea id="pmNotes" placeholder="Fabric preference, occasion, or anything else..."></textarea>
+            </div>
+            <button class="btn btn-champagne" style="margin-top:12px;width:100%;justify-content:center" onclick="sendMeasurements()">Send to OJ Clothings</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(ov);
+  ov.addEventListener('click', e=>{ if(e.target === ov) closeProductModal(); });
+}
+
+let pmSelectedSize = '';
+
+function openProduct(el){
+  injectProductModal();
+  const id = el.dataset.id;
+  const copy = PRODUCT_COPY[id] || {fabric:'', desc:'', sizes:['S','M','L','XL']};
+  const img = el.querySelector('.prod-img img');
+  const tag = el.querySelector('.tag');
+  const name = el.querySelector('.pn')?.textContent || '';
+  const price = el.querySelector('.pp')?.textContent || '';
+
+  ojCurrentProduct = { id, name, price, fabric: copy.desc + ' ' + (copy.fabric||'').replace(/<\/?b>/g,'') };
+  pmSelectedSize = '';
+
+  const ov = document.querySelector('.pm-overlay');
+  const modalImg = ov.querySelector('.pm-img img');
+  if(img){ modalImg.src = img.src; modalImg.style.display=''; ov.querySelector('.pm-img').style.background=''; }
+  else { modalImg.style.display='none'; ov.querySelector('.pm-img').style.background = getComputedStyle(el.querySelector('.prod-img')).background; }
+
+  const pmTag = ov.querySelector('.pm-tag');
+  pmTag.textContent = tag?.textContent || '';
+  pmTag.style.display = tag ? '' : 'none';
+  ov.querySelector('.pm-name').textContent = name;
+  ov.querySelector('.pm-price').textContent = price;
+  ov.querySelector('.pm-desc').textContent = copy.desc;
+  ov.querySelector('.pm-fabric').innerHTML = copy.fabric;
+
+  const sizesEl = ov.querySelector('.pm-sizes');
+  sizesEl.innerHTML = '';
+  copy.sizes.forEach(s=>{
+    const b = document.createElement('button');
+    b.className='pm-size-btn'; b.textContent=s;
+    b.onclick = ()=>{ pmSelectedSize = s; sizesEl.querySelectorAll('.pm-size-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); };
+    sizesEl.appendChild(b);
+  });
+
+  ov.querySelector('.pm-wa-btn').onclick = ()=>{
+    const sizeTxt = pmSelectedSize ? ` Size: ${pmSelectedSize}.` : '';
+    const text = encodeURIComponent(`Hello OJ Clothings, I'd like to reserve: ${name} (${price}).${sizeTxt}`);
+    window.open(`https://wa.me/2349167728000?text=${text}`, '_blank');
+  };
+
+  ov.querySelector('.pm-measure-form').classList.remove('open');
+  ov.querySelector('.pm-measure-toggle').textContent = '+ Send My Measurements';
+
+  ov.classList.add('open');
+}
+function closeProductModal(){
+  document.querySelector('.pm-overlay')?.classList.remove('open');
+  ojCurrentProduct = null;
+}
+function toggleMeasureForm(){
+  const f = document.querySelector('.pm-measure-form');
+  const t = document.querySelector('.pm-measure-toggle');
+  const open = f.classList.toggle('open');
+  t.textContent = open ? '− Hide Measurements' : '+ Send My Measurements';
+}
+function sendMeasurements(){
+  const h = document.getElementById('pmHeight').value.trim();
+  const c = document.getElementById('pmChest').value.trim();
+  const w = document.getElementById('pmWaist').value.trim();
+  const s = document.getElementById('pmShoulder').value.trim();
+  const n = document.getElementById('pmNotes').value.trim();
+  const name = ojCurrentProduct?.name || 'a piece';
+  let msg = `Hello OJ Clothings, I'd like to send my measurements for: ${name}.`;
+  if(h) msg += ` Height: ${h}cm.`;
+  if(c) msg += ` Chest: ${c}cm.`;
+  if(w) msg += ` Waist: ${w}cm.`;
+  if(s) msg += ` Shoulder: ${s}cm.`;
+  if(n) msg += ` Notes: ${n}.`;
+  window.open(`https://wa.me/2349167728000?text=${encodeURIComponent(msg)}`, '_blank');
+}
+function askOJAboutProduct(){
+  openOJ();
+  const name = ojCurrentProduct?.name || 'this piece';
+  askOJ(`Tell me about ${name}`);
 }
