@@ -86,16 +86,22 @@ module.exports = async (req, res) => {
     if (!resp.ok) {
       const errText = await resp.text();
       console.error('Anthropic API error', resp.status, errText);
-      res.status(502).json({ error: 'OJ is having trouble responding right now.' });
+      const noCredits = resp.status === 429
+        || resp.status === 529
+        || /credit balance|insufficient_quota|rate_limit|overloaded/i.test(errText);
+      res.status(200).json({ whatsappFallback: true, outOfCredits: noCredits });
       return;
     }
 
     const data = await resp.json();
-    const reply = (data.content || []).map(b => b.text || '').join('').trim()
-      || 'Thank you for reaching out — our team can help further on WhatsApp.';
+    const reply = (data.content || []).map(b => b.text || '').join('').trim();
+    if (!reply) {
+      res.status(200).json({ whatsappFallback: true });
+      return;
+    }
     res.status(200).json({ reply });
   } catch (err) {
     console.error('OJ endpoint error', err);
-    res.status(500).json({ error: 'OJ is offline for a moment.' });
+    res.status(200).json({ whatsappFallback: true });
   }
 };

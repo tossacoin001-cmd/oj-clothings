@@ -132,6 +132,14 @@ function addMsg(text,from){
   body.appendChild(d); body.scrollTop=body.scrollHeight;
   return d;
 }
+function addWhatsAppFallback(){
+  const body = document.querySelector('.oj-body');
+  if(!body) return;
+  const d = document.createElement('div');
+  d.className='msg oj';
+  d.innerHTML = `I'll hand you straight to our team for this one — they reply within minutes. <a href="${WA}" target="_blank" style="color:var(--champagne);text-decoration:underline">Continue on WhatsApp &rarr;</a>`;
+  body.appendChild(d); body.scrollTop=body.scrollHeight;
+}
 function addTyping(){
   const body = document.querySelector('.oj-body');
   if(!body) return null;
@@ -152,31 +160,19 @@ async function askOJ(msg){
       headers:{'content-type':'application/json'},
       body: JSON.stringify({ messages: ojHistory, product: ojCurrentProduct }),
     });
-    if(!res.ok) throw new Error('bad status');
-    const data = await res.json();
+    const data = await res.json().catch(()=>({}));
     typing?.remove();
-    const reply = data.reply || getReply(msg);
+    if(!res.ok || data.whatsappFallback){
+      addWhatsAppFallback();
+      return;
+    }
+    const reply = data.reply;
     addMsg(reply,'oj');
     ojHistory.push({role:'oj', content: reply});
   }catch(err){
     typing?.remove();
-    const reply = getReply(msg);
-    addMsg(reply,'oj');
-    ojHistory.push({role:'oj', content: reply});
+    addWhatsAppFallback();
   }
-}
-function getReply(msg){
-  const m = msg.toLowerCase();
-  if(/agbada/.test(m)) return 'Our Agbada collection runs from ₦185,000 (ready-to-wear) up to ₦850,000 for bespoke ceremonial pieces — crafted in premium damask, aso-oke, and hand-embroidered satin. Want to see options?';
-  if(/jalabia|al.turath/.test(m)) return 'The Al-Turath Jalabia starts from ₦92,000 ready-to-wear and ₦200,000+ for custom pieces. Pure heritage, refined for the modern man. Shall I connect you with our team?';
-  if(/kaftan/.test(m)) return 'Kaftans from ₦74,000 — the Sahel two-piece is a current favourite. Relaxed luxury for everyday elegance. Would you like to know more?';
-  if(/suit|suede/.test(m)) return 'Tailored suits from ₦160,000 (made-to-measure) to ₦800,000 for premium suede and signature pieces. Custom measurements available in-store or virtually.';
-  if(/price|cost|much/.test(m)) return 'Prices range from ₦74,000 (ready-to-wear kaftans) to ₦850,000 (bespoke agbada). Our team on WhatsApp can give you an exact quote.';
-  if(/store|location|where|address/.test(m)) return 'Two Lekki stores: Admiralty Mall (Lekki Phase 1) and Ikota Shopping Complex (VGC). Both open Mon–Sat, 9am–7pm.';
-  if(/ship|deliver|worldwide/.test(m)) return 'Yes — we ship worldwide. Lagos delivery: 24–48hrs. International: 5–10 working days. Every piece is carefully packaged.';
-  if(/fitting|measure|mtm|custom|bespoke/.test(m)) return 'We offer in-store fittings at both Lekki locations and virtual measurements via WhatsApp. Our tailor will guide you through every detail.';
-  if(/order|buy|purchase/.test(m)) return "To place an order, chat our team on WhatsApp. We'll confirm your measurements, fabric choice, and timeline personally.";
-  return 'Thank you for reaching out to OJ Clothings. Our team can assist with collections, sizing, and bespoke orders. For immediate help, chat us on WhatsApp — we respond within minutes.';
 }
 function sendOJ(){
   const inp = document.querySelector('.oj-input input');
