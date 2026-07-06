@@ -141,6 +141,10 @@
 .prod .pp{font-size:13px;color:var(--muted);margin-top:4px;letter-spacing:.03em}
 .prod .plink{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--champagne);margin-top:10px;display:inline-block;transition:.3s}
 .prod:hover .plink{color:var(--champagne-soft)}
+.cat-strip{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line)}
+.cat-strip span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cat-strip a{font-family:var(--serif);font-size:18px;color:var(--bone-dim);transition:.3s}
+.cat-strip a:hover{color:var(--champagne)}
 
 /* ---- MTM Strip ---- */
 .mtm{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -265,74 +269,8 @@
   <div class="scrollcue">Scroll</div>
 </section>
 
-<!-- COLLECTIONS -->
-<section id="collections">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <span class="eyebrow">The Collections</span>
-        <h2 class="display">Four worlds of dress.</h2>
-      </div>
-      <p class="lead" style="max-width:340px">From the grandeur of agbada to the ease of a tailored kaftan — each line made for its moment.</p>
-    </div>
-    <div class="col-grid stagger">
-      <a class="col-card reveal" href="collections.html?cat=agbada">
-        <img src="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/xuieschu0h-1779309136377.jpeg" alt="Agbada Collection" loading="lazy">
-        <div class="col-meta"><div class="n">Agbada</div><div class="s">Ceremony &amp; prestige</div><div class="arrow">Explore &#x2192;</div></div>
-      </a>
-      <a class="col-card reveal" href="collections.html?cat=jalabia">
-        <img src="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/wfoxzxoh84d-1779288623539.jpeg" alt="Jalabia Collection" loading="lazy">
-        <div class="col-meta"><div class="n">Al-Turath Jalabia</div><div class="s">Heritage, refined</div><div class="arrow">Explore &#x2192;</div></div>
-      </a>
-      <a class="col-card reveal" href="collections.html?cat=kaftan">
-        <div class="ph ph-grad-3"></div>
-        <div class="col-meta"><div class="n">Kaftans</div><div class="s">Everyday ease</div><div class="arrow">Explore &#x2192;</div></div>
-      </a>
-      <a class="col-card reveal" href="collections.html?cat=suits">
-        <img src="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/p2qfy0laj58-1779307340349.jpeg" alt="Suits Collection" loading="lazy">
-        <div class="col-meta"><div class="n">Suits</div><div class="s">Tailored &amp; sharp</div><div class="arrow">Explore &#x2192;</div></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- OCCASION -->
-<section class="occasion">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div><span class="eyebrow">Dress for the Day</span><h2 class="display">Shop by occasion.</h2></div>
-    </div>
-    <div class="occ-grid">
-      <div class="occ reveal" onclick="askOJ('What should I wear to a Nigerian wedding?')">
-        <div class="num">01</div>
-        <div class="t">Weddings</div>
-        <p>Make an entrance worth remembering. Grand agbada or refined jalabia.</p>
-        <div class="go">Style me &#x2192;</div>
-      </div>
-      <div class="occ reveal" onclick="askOJ('What should I wear to an owambe party?')">
-        <div class="num">02</div>
-        <div class="t">Owambe</div>
-        <p>The party calls for colour, fabric, and presence. We know exactly what to do.</p>
-        <div class="go">Style me &#x2192;</div>
-      </div>
-      <div class="occ reveal" onclick="askOJ('What should I wear for Eid or a festive occasion?')">
-        <div class="num">03</div>
-        <div class="t">Eid &amp; Festive</div>
-        <p>Crisp, clean, and full of intention. Jalabia and kaftans done right.</p>
-        <div class="go">Style me &#x2192;</div>
-      </div>
-      <div class="occ reveal" onclick="askOJ('What should I wear to a business meeting or formal event?')">
-        <div class="num">04</div>
-        <div class="t">Business</div>
-        <p>Power dressing with cultural edge. Tailored suits and sharp kaftans.</p>
-        <div class="go">Style me &#x2192;</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FEATURED PRODUCTS -->
-<section>
+<section id="collections">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -378,6 +316,13 @@
         <div class="pp">From &#x20A6;160,000</div>
         <div class="plink">Enquire &#x2192;</div>
       </div>
+    </div>
+    <div class="cat-strip reveal">
+      <span>Shop by collection</span>
+      <a href="collections.html?cat=agbada">Agbada</a>
+      <a href="collections.html?cat=jalabia">Al-Turath Jalabia</a>
+      <a href="collections.html?cat=kaftan">Kaftans</a>
+      <a href="collections.html?cat=suits">Suits</a>
     </div>
   </div>
 </section>
