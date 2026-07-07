@@ -79,7 +79,7 @@ document.addEventListener('click', e=>{
     ring.style.left=rx+'px'; ring.style.top=ry+'px';
     requestAnimationFrame(loop);
   })();
-  document.querySelectorAll('a,button,.col-card,.prod,.occ,.fab,.chip').forEach(el=>{
+  document.querySelectorAll('a,button,.prod,.prod-item,.fab,.chip').forEach(el=>{
     el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
     el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
   });
@@ -120,6 +120,18 @@ function toggleTheme(){
 }
 if(localStorage.getItem('oj-theme')==='light') document.body.classList.add('light');
 
+/* ---- Newsletter ---- */
+function joinNewsletter(btn){
+  const inp = btn.closest('.news')?.querySelector('input');
+  const email = (inp?.value || '').trim();
+  if(!email || !/^\S+@\S+\.\S+$/.test(email)){ inp?.focus(); return; }
+  const msg = `Hello OJ Clothings, please add me to the newsletter for new collections and first access. Email: ${email}`;
+  window.open(`https://wa.me/2349167728000?text=${encodeURIComponent(msg)}`, '_blank');
+  inp.value = '';
+  btn.textContent = 'Sent';
+  setTimeout(()=>{ btn.textContent = 'Join'; }, 3000);
+}
+
 /* ---- OJ Concierge ---- */
 const ojHistory = [];
 let ojCurrentProduct = null;
@@ -150,7 +162,7 @@ function addWhatsAppFallback(){
   if(!body) return;
   const d = document.createElement('div');
   d.className='msg oj';
-  d.innerHTML = `I'll hand you straight to our team for this one — they reply within minutes. <a href="${WA}" target="_blank" style="color:var(--champagne);text-decoration:underline">Continue on WhatsApp &rarr;</a>`;
+  d.innerHTML = `I'll hand you straight to our team for this one. They reply within minutes. <a href="${WA}" target="_blank" rel="noopener" style="color:var(--champagne);text-decoration:underline">Continue on WhatsApp &rarr;</a>`;
   body.appendChild(d); body.scrollTop=body.scrollHeight;
 }
 function addTyping(){
@@ -211,12 +223,12 @@ function filterProducts(cat){
 const PRODUCT_COPY = {
   'agbada-blue': {
     fabric: '<b>Fabric:</b> premium damask & aso-oke, hand-embroidered satin trim.',
-    desc: 'A statement ceremonial agbada — heavy, lustrous drape with hand-embroidery across the chest. Built for owambe, weddings, and the moments you want to be remembered in.',
+    desc: 'A statement ceremonial agbada. Heavy, lustrous drape with hand-embroidery across the chest, built for owambe, weddings, and the moments you want to be remembered in.',
     sizes: ['S','M','L','XL','XXL','Custom'],
   },
   'obsidian-agbada': {
     fabric: '<b>Fabric:</b> matte obsidian weave, structured shoulder.',
-    desc: 'Agbada without the shine — a deep matte black weave with a structured, modern silhouette. Quiet luxury for the man who doesn’t need to shout.',
+    desc: 'Agbada without the shine. A deep matte black weave with a structured, modern silhouette. Quiet luxury for the man who doesn’t need to shout.',
     sizes: ['S','M','L','XL','XXL','Custom'],
   },
   'jalabia-ivory': {
@@ -226,12 +238,12 @@ const PRODUCT_COPY = {
   },
   'al-turath-collection': {
     fabric: '<b>Fabric:</b> your choice of premium cotton, linen, or silk-blend.',
-    desc: 'Custom Al-Turath jalabia, cut to your exact measurements. Pure heritage tailoring, modern fit — built piece by piece for you.',
+    desc: 'Custom Al-Turath jalabia, cut to your exact measurements. Pure heritage tailoring with a modern fit, built piece by piece for you.',
     sizes: ['Custom'],
   },
   'sahel-kaftan': {
     fabric: '<b>Fabric:</b> relaxed linen-cotton weave.',
-    desc: 'The easiest entry point into the OJ wardrobe — a breathable two-piece kaftan built for everyday elegance, not just special occasions.',
+    desc: 'The easiest entry point into the OJ wardrobe: a breathable two-piece kaftan built for everyday elegance, not just special occasions.',
     sizes: ['S','M','L','XL','XXL'],
   },
   'kembe-classic': {
@@ -241,12 +253,12 @@ const PRODUCT_COPY = {
   },
   'suede-suit': {
     fabric: '<b>Fabric:</b> genuine suede, soft hand-feel.',
-    desc: 'Bold, rare, unmistakably premium. Genuine suede with structured tailoring — limited runs, made for the man who wants to stand apart.',
+    desc: 'Bold, rare, unmistakably premium. Genuine suede with structured tailoring in limited runs, made for the man who wants to stand apart.',
     sizes: ['S','M','L','XL','XXL'],
   },
   'signature-suit': {
     fabric: '<b>Fabric:</b> finest wool blend, full canvas construction.',
-    desc: 'OJ’s flagship tailored suit. Full canvas construction, hand-finished buttonholes — built to outlast trends.',
+    desc: 'OJ’s flagship tailored suit. Full canvas construction and hand-finished buttonholes, built to outlast trends.',
     sizes: ['S','M','L','XL','XXL','Custom'],
   },
   'onyx-suit': {
@@ -276,7 +288,7 @@ function injectProductModal(){
         </div>
         <div class="pm-ctas">
           <button class="btn btn-solid pm-wa-btn">Reserve via WhatsApp</button>
-          <a href="made-to-measure.html" class="btn btn-ghost">Book a Fitting</a>
+          <a href="/made-to-measure" class="btn btn-ghost">Book a Fitting</a>
           <button class="pm-ask-oj" onclick="askOJAboutProduct()">
             <img src="assets/img/logo.jpg" alt="OJ"> Ask OJ about this piece
           </button>

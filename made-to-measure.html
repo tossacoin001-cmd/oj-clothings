@@ -3,13 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Made-to-Measure — OJ Clothings</title>
-<meta name="description" content="Bespoke tailoring at OJ Clothings. In-store or virtual measurements. Agbada, jalabia, kaftans, suits — crafted to your exact measure. Lekki, Lagos.">
+<title>Made-to-Measure Tailoring in Lagos | OJ Clothings</title>
+<meta name="description" content="Bespoke tailoring at OJ Clothings. In-store or virtual measurements for agbada, jalabia, kaftans and suits, crafted to your exact measure in Lekki, Lagos.">
+<link rel="canonical" href="https://oj-clothings-repo.vercel.app/made-to-measure">
+<meta name="theme-color" content="#0a0a0b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OJ Clothings">
+<meta property="og:title" content="Made-to-Measure Tailoring in Lagos | OJ Clothings">
+<meta property="og:description" content="Bespoke tailoring, in-store or virtual. Consult, measure, craft, deliver. Lekki, Lagos. Worldwide delivery.">
+<meta property="og:url" content="https://oj-clothings-repo.vercel.app/made-to-measure">
+<meta property="og:image" content="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/6ngixdsqykp-1779288101039.jpeg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/global.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://oj-clothings-repo.vercel.app/"},
+        {"@type": "ListItem", "position": 2, "name": "Made-to-Measure", "item": "https://oj-clothings-repo.vercel.app/made-to-measure"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Made-to-Measure Tailoring",
+      "serviceType": "Bespoke tailoring",
+      "description": "Bespoke agbada, jalabia, kaftans and suits, tailored to exact measurements. In-store fittings in Lekki, Lagos or guided virtual consultations via WhatsApp. Worldwide delivery.",
+      "provider": {"@type": "ClothingStore", "name": "OJ Clothings", "url": "https://oj-clothings-repo.vercel.app/"},
+      "areaServed": "Worldwide",
+      "url": "https://oj-clothings-repo.vercel.app/made-to-measure"
+    }
+  ]
+}
+</script>
 <style>
 /* ---- Process Steps ---- */
 .process-grid{
@@ -81,23 +113,22 @@
 
 <!-- NAV -->
 <header class="nav" id="nav">
-  <a class="nav-logo" href="index.html">
+  <a class="nav-logo" href="/">
     <img src="assets/img/logo.jpg" alt="OJ Clothings" class="logo-img loaded">
     <span class="name">OJ Clothings</span>
   </a>
   <nav>
     <ul class="nav-links">
-      <li><a href="collections.html">Collections</a></li>
-      <li><a href="made-to-measure.html">Made-to-Measure</a></li>
-      <li><a href="stores.html">Our Stores</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="/collections">Collections</a></li>
+      <li><a href="/made-to-measure">Made-to-Measure</a></li>
+      <li><a href="/stores">Our Stores</a></li>
+      <li><a href="/about">About</a></li>
     </ul>
   </nav>
   <div class="nav-right">
     <span class="nav-ship">Ships Worldwide</span>
-    <span class="nav-icon" onclick="openOJ()">&#x2315;</span>
-    <span class="nav-icon" onclick="toggleTheme()">&#x25D1;</span>
-    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    <button class="nav-icon" title="Toggle theme" aria-label="Toggle light or dark theme" onclick="toggleTheme()">&#x25D1;</button>
+    <button class="burger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -106,7 +137,7 @@
   <div class="wrap">
     <span class="eyebrow">The OJ Way</span>
     <h1 class="display" style="font-size:clamp(40px,7vw,90px)">Made to your<br><em style="color:var(--champagne-soft)">exact measure.</em></h1>
-    <p class="lead" style="max-width:520px;margin-top:20px">From first consultation to final stitch — every bespoke piece at OJ Clothings is built around you. Your fabric, your fit, your story.</p>
+    <p class="lead" style="max-width:520px;margin-top:20px">From first consultation to final stitch, every bespoke piece at OJ Clothings is built around you. Your fabric, your fit, your story.</p>
     <div class="page-hero-line"></div>
   </div>
 </div>
@@ -125,7 +156,7 @@
       <div class="process-step reveal">
         <div class="num">01</div>
         <h3>Consult</h3>
-        <p>We discuss your occasion, style preferences, and fabric options. In-store or via WhatsApp — we meet you where you are.</p>
+        <p>We discuss your occasion, style preferences, and fabric options. In-store or via WhatsApp, we meet you where you are.</p>
       </div>
       <div class="process-step reveal">
         <div class="num">02</div>
@@ -135,12 +166,12 @@
       <div class="process-step reveal">
         <div class="num">03</div>
         <h3>Craft</h3>
-        <p>Our tailors cut, sew, and hand-finish every piece. Premium damask, aso-oke, satin, suede — chosen and crafted with care.</p>
+        <p>Our tailors cut, sew, and hand-finish every piece. Premium damask, aso-oke, satin and suede, chosen and crafted with care.</p>
       </div>
       <div class="process-step reveal">
         <div class="num">04</div>
         <h3>Deliver</h3>
-        <p>Your piece arrives ready to wear — packaged with care. Lagos delivery in 24–48hrs. International shipping worldwide.</p>
+        <p>Your piece arrives ready to wear, packaged with care. Lagos delivery in 24–48hrs. International shipping worldwide.</p>
       </div>
     </div>
   </div>
@@ -159,7 +190,7 @@
       <div class="why-item reveal">
         <div class="icon">&#x2737;</div>
         <h4>Perfect Fit</h4>
-        <p>Every measurement is yours alone. No alterations needed — just fabric that moves exactly as you do.</p>
+        <p>Every measurement is yours alone. No alterations needed, just fabric that moves exactly as you do.</p>
       </div>
       <div class="why-item reveal">
         <div class="icon">&#x2741;</div>
@@ -169,7 +200,7 @@
       <div class="why-item reveal">
         <div class="icon">&#x2756;</div>
         <h4>Your Design Vision</h4>
-        <p>Colours, embroidery patterns, collar styles — everything is your decision. We bring the skill, you bring the vision.</p>
+        <p>Colours, embroidery patterns, collar styles: everything is your decision. We bring the skill, you bring the vision.</p>
       </div>
     </div>
   </div>
@@ -185,12 +216,12 @@
         <p class="lead" style="margin-top:16px">Choose how you'd like to begin. Our team is ready.</p>
       </div>
       <div class="book-options">
-        <a class="book-option" href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20book%20an%20in-store%20fitting" target="_blank">
+        <a class="book-option" href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20book%20an%20in-store%20fitting" target="_blank" rel="noopener">
           <div class="ot">In-Store</div>
           <h4>Visit Our Lekki Studio</h4>
           <p>Come in for a personal consultation and fitting at Admiralty Mall or Ikota Shopping Complex.</p>
         </a>
-        <a class="book-option" href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20start%20a%20virtual%20MTM%20consultation" target="_blank">
+        <a class="book-option" href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20start%20a%20virtual%20MTM%20consultation" target="_blank" rel="noopener">
           <div class="ot">Virtual</div>
           <h4>WhatsApp Consultation</h4>
           <p>Chat with our team from anywhere in the world. We guide you through measurements and fabric selection step by step.</p>
@@ -216,16 +247,16 @@
     </div>
     <div class="testimonial-grid stagger">
       <div class="testi reveal">
-        <p class="text">"The most impeccable agbada I have ever worn. OJ's team paid attention to every single detail — from the fabric selection to the embroidery. I was the best-dressed man at my brother's wedding."</p>
-        <p class="by">— A.B., Lagos &mdash; Wedding Client</p>
+        <p class="text">"The most impeccable agbada I have ever worn. OJ's team paid attention to every single detail, from the fabric selection to the embroidery. I was the best-dressed man at my brother's wedding."</p>
+        <p class="by">A.B., Lagos &middot; Wedding Client</p>
       </div>
       <div class="testi reveal">
         <p class="text">"I did a virtual fitting from London and the suit arrived in perfect condition, fitting like it was made on my body. Because it was. Absolute professionalism from start to finish."</p>
-        <p class="by">— K.O., London &mdash; International Client</p>
+        <p class="by">K.O., London &middot; International Client</p>
       </div>
       <div class="testi reveal">
-        <p class="text">"Three jalabia sets and two agbada in two years. Every single piece has been flawless. OJ Clothings is not a brand — it's a standard."</p>
-        <p class="by">— E.A., Abuja &mdash; Repeat Client</p>
+        <p class="text">"Three jalabia sets and two agbada in two years. Every single piece has been flawless. OJ Clothings is not a brand. It's a standard."</p>
+        <p class="by">E.A., Abuja &middot; Repeat Client</p>
       </div>
     </div>
   </div>
@@ -237,44 +268,52 @@
     <div class="foot-grid">
       <div>
         <div class="foot-logo">
-          <img src="assets/img/logo.jpg" alt="OJ" class="logo-img loaded">
+          <img src="assets/img/logo.jpg" alt="OJ Clothings" class="logo-img loaded">
           <span class="name">OJ Clothings</span>
         </div>
-        <p class="foot-desc">Modern luxury native wear. Lekki, Lagos. Shipping worldwide.</p>
+        <p class="foot-desc">Modern luxury native wear from Lekki, Lagos. Agbada, jalabia, kaftans and tailored suits, crafted for every moment that matters.</p>
         <div class="foot-social">
-          <a href="https://www.instagram.com/o.j_clothing/" target="_blank">Instagram</a>
-          <a href="https://www.tiktok.com/@oj_clothings" target="_blank">TikTok</a>
+          <a href="https://www.instagram.com/o.j_clothing/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@oj_clothings" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.snapchat.com/add/ojclothings" target="_blank" rel="noopener">Snapchat</a>
         </div>
       </div>
       <div class="foot"><h4>Shop</h4><ul>
-        <li><a href="collections.html?cat=agbada">Agbada</a></li>
-        <li><a href="collections.html?cat=jalabia">Jalabia</a></li>
-        <li><a href="collections.html?cat=kaftan">Kaftans</a></li>
-        <li><a href="collections.html?cat=suits">Suits</a></li>
-        <li><a href="made-to-measure.html">Made-to-Measure</a></li>
+        <li><a href="/collections?cat=agbada">Agbada</a></li>
+        <li><a href="/collections?cat=jalabia">Jalabia</a></li>
+        <li><a href="/collections?cat=kaftan">Kaftans</a></li>
+        <li><a href="/collections?cat=suits">Suits</a></li>
+        <li><a href="/made-to-measure">Made-to-Measure</a></li>
       </ul></div>
-      <div class="foot"><h4>Help</h4><ul>
-        <li><a href="https://wa.me/2349167728000" target="_blank">WhatsApp</a></li>
-        <li><a href="stores.html">Our Stores</a></li>
+      <div class="foot"><h4>Company</h4><ul>
+        <li><a href="/about">About OJ</a></li>
+        <li><a href="/stores">Our Stores</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="https://wa.me/2349167728000" target="_blank" rel="noopener">WhatsApp Us</a></li>
         <li><a href="mailto:info@ojclothing.com">info@ojclothing.com</a></li>
-        <li><a href="tel:+2349167728000">+234 916 772 8000</a></li>
       </ul></div>
-      <div class="foot"><h4>Navigate</h4><ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About OJ</a></li>
-        <li><a href="stores.html">Stores</a></li>
-        <li><a href="careers.html">Careers</a></li>
-      </ul></div>
+      <div class="foot">
+        <h4>Stay in the Loop</h4>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:4px">New collections, first access, stories.</p>
+        <div class="news">
+          <input type="email" placeholder="Your email" aria-label="Email address" autocomplete="email">
+          <button onclick="joinNewsletter(this)">Join</button>
+        </div>
+      </div>
     </div>
     <div class="foot-bottom">
       <p>&copy; 2026 OJ Clothings. All rights reserved.</p>
-      <p>Lekki, Lagos &middot; Nigeria &middot; &#x2708; Ships Worldwide</p>
+      <p>Lekki, Lagos, Nigeria &middot; Ships Worldwide</p>
+      <div style="display:flex;gap:20px">
+        <a href="tel:+2349167728000">+234 916 772 8000</a>
+        <a href="tel:+2347034958410">+234 703 495 8410</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <div class="fab-cluster">
-  <a class="fab fab-wa" href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20book%20a%20fitting" target="_blank">
+  <a class="fab fab-wa" href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20book%20a%20fitting" target="_blank" rel="noopener">
     <div class="lbl">Book a Fitting</div>
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
@@ -303,19 +342,20 @@
     <input type="text" placeholder="Ask about bespoke…">
     <button onclick="sendOJ()">Send</button>
   </div>
-  <p class="oj-note">To book, <a href="https://wa.me/2349167728000" target="_blank">WhatsApp our team</a>.</p>
+  <p class="oj-note">To book, <a href="https://wa.me/2349167728000" target="_blank" rel="noopener">WhatsApp our team</a>.</p>
 </div>
 
 <div class="mob-overlay"></div>
 <div class="mob-nav">
-  <button class="mob-close">&#x2715;</button>
+  <button class="mob-close" aria-label="Close menu">&#x2715;</button>
   <ul>
-    <li><a href="collections.html">Collections</a></li>
-    <li><a href="made-to-measure.html">Made-to-Measure</a></li>
-    <li><a href="stores.html">Our Stores</a></li>
-    <li><a href="about.html">About</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/collections">Collections</a></li>
+    <li><a href="/made-to-measure">Made-to-Measure</a></li>
+    <li><a href="/stores">Our Stores</a></li>
+    <li><a href="/about">About</a></li>
   </ul>
-  <a href="https://wa.me/2349167728000" target="_blank" class="btn btn-solid mob-wa">Book a Fitting</a>
+  <a href="https://wa.me/2349167728000" target="_blank" rel="noopener" class="btn btn-solid mob-wa">Book a Fitting</a>
 </div>
 
 <script src="assets/js/main.js"></script>

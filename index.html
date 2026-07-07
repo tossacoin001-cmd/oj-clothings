@@ -3,13 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OJ Clothings — Heritage, Tailored for the Modern Man</title>
-<meta name="description" content="OJ Clothings — modern luxury native wear. Agbada, jalabia, kaftans and tailored suits. Two homes in Lekki. Shipping worldwide.">
+<title>OJ Clothings | Luxury Native Wear in Lekki, Lagos</title>
+<meta name="description" content="Luxury Nigerian native wear, made to measure. Shop agbada, Al-Turath jalabia, kaftans and tailored suits from OJ Clothings in Lekki, Lagos. Worldwide delivery.">
+<link rel="canonical" href="https://oj-clothings-repo.vercel.app/">
+<meta name="theme-color" content="#0a0a0b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OJ Clothings">
+<meta property="og:title" content="OJ Clothings | Luxury Native Wear in Lekki, Lagos">
+<meta property="og:description" content="Luxury Nigerian native wear, made to measure. Agbada, jalabia, kaftans and tailored suits from Lekki, Lagos. Worldwide delivery.">
+<meta property="og:url" content="https://oj-clothings-repo.vercel.app/">
+<meta property="og:image" content="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/xuieschu0h-1779309136377.jpeg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://qchvsaqdpwsicklrmfux.supabase.co">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/global.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "OJ Clothings",
+  "description": "Luxury Nigerian native wear. Agbada, Al-Turath jalabia, kaftans and tailored suits, ready to wear and made to measure.",
+  "url": "https://oj-clothings-repo.vercel.app/",
+  "logo": "https://oj-clothings-repo.vercel.app/assets/img/logo.jpg",
+  "image": "https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/xuieschu0h-1779309136377.jpeg",
+  "telephone": "+2349167728000",
+  "email": "info@ojclothing.com",
+  "priceRange": "₦74,000 - ₦850,000",
+  "currenciesAccepted": "NGN",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Admiralty Mall, Admiralty Way, Lekki Phase 1",
+    "addressLocality": "Lagos",
+    "addressCountry": "NG"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "09:00",
+    "closes": "19:00"
+  },
+  "sameAs": [
+    "https://www.instagram.com/o.j_clothing/",
+    "https://www.tiktok.com/@oj_clothings",
+    "https://www.snapchat.com/add/ojclothings"
+  ]
+}
+</script>
 <style>
 
 /* ---- Intro Splash ----
@@ -79,16 +121,6 @@
 .hero-media img{width:100%;height:100%;object-fit:cover;animation:heroImgIn 1.4s var(--ease) .2s both}
 @keyframes heroImgIn{from{transform:scale(1.08);opacity:.6}to{transform:scale(1);opacity:1}}
 .hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,var(--obsidian) 0%,transparent 30%)}
-.hero-stats{
-  position:absolute;top:30%;right:0;z-index:3;
-  display:flex;flex-direction:column;gap:1px;
-  border:1px solid var(--line);
-  animation:fadeLeft .9s var(--ease) 1s both;
-}
-.hero-stat{padding:14px 20px;border-bottom:1px solid var(--line);text-align:center}
-.hero-stat:last-child{border-bottom:none}
-.hero-stat .n{font-family:var(--serif);font-size:22px;line-height:1}
-.hero-stat .l{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 .scrollcue{
   position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;
   font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
@@ -97,35 +129,6 @@
 }
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes fadeLeft{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
-
-/* ---- Collections Grid ---- */
-.col-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.col-card{position:relative;aspect-ratio:3/4.2;overflow:hidden;cursor:pointer;background:var(--charcoal);display:block}
-.col-card img{width:100%;height:100%;object-fit:cover;transition:1.1s var(--ease)}
-.col-card .ph{width:100%;height:100%;position:absolute;inset:0}
-.col-card:hover img{transform:scale(1.06)}
-.col-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,11,.92));z-index:1}
-.col-meta{position:absolute;left:22px;bottom:22px;z-index:2}
-.col-meta .n{font-family:var(--serif);font-size:25px;line-height:1.1}
-.col-meta .s{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);margin-top:6px}
-.col-meta .arrow{margin-top:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);opacity:0;transform:translateX(-8px);transition:.5s var(--ease)}
-.col-card:hover .col-meta .arrow{opacity:1;transform:none}
-.ph-grad-1{background:radial-gradient(130% 100% at 30% 20%,#2a2a30,#101012)}
-.ph-grad-2{background:radial-gradient(130% 100% at 70% 30%,#27262b,#0d0d10)}
-.ph-grad-3{background:radial-gradient(130% 100% at 40% 60%,#242429,#0c0c0f)}
-.ph-grad-4{background:radial-gradient(130% 100% at 60% 40%,#202025,#0b0b0e)}
-
-/* ---- Occasion ---- */
-.occasion{background:var(--obsidian-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.occ-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.occ{padding:40px 26px;border-right:1px solid var(--line);transition:.5s var(--ease);cursor:pointer}
-.occ:last-child{border-right:none}
-.occ:hover{background:var(--charcoal)}
-.occ .num{font-family:var(--serif);font-size:15px;color:var(--champagne);font-style:italic}
-.occ .t{font-family:var(--serif);font-size:27px;margin:16px 0 10px}
-.occ p{font-size:13.5px;color:var(--muted);min-height:46px}
-.occ .go{margin-top:18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim)}
 
 /* ---- Products ---- */
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -180,14 +183,11 @@
   .hero{grid-template-columns:1fr}
   .hero-media{display:none}
   .hero-content{padding-right:28px;min-height:100vh}
-  .col-grid,.prod-grid{grid-template-columns:repeat(2,1fr)}
-  .occ-grid{grid-template-columns:repeat(2,1fr)}
-  .occ:nth-child(2){border-right:none}
-  .occ{border-bottom:1px solid var(--line)}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
   .proof{grid-template-columns:1fr;gap:40px}
 }
 @media(max-width:640px){
-  .col-grid,.prod-grid{grid-template-columns:1fr 1fr}
+  .prod-grid{grid-template-columns:1fr 1fr}
   .hero-cta{flex-direction:column}
   .hero-cta .btn{width:100%;justify-content:center}
   .proof-stats{gap:28px}
@@ -226,24 +226,22 @@
 
 <!-- NAV -->
 <header class="nav" id="nav">
-  <a class="nav-logo" href="index.html">
+  <a class="nav-logo" href="/">
     <img src="assets/img/logo.jpg" alt="OJ Clothings" class="logo-img loaded">
     <span class="name">OJ Clothings</span>
   </a>
   <nav>
     <ul class="nav-links">
-      <li><a href="collections.html">Collections</a></li>
-      <li><a href="made-to-measure.html">Made-to-Measure</a></li>
-      <li><a href="stores.html">Our Stores</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="/collections">Collections</a></li>
+      <li><a href="/made-to-measure">Made-to-Measure</a></li>
+      <li><a href="/stores">Our Stores</a></li>
+      <li><a href="/about">About</a></li>
     </ul>
   </nav>
   <div class="nav-right">
     <span class="nav-ship">Ships Worldwide</span>
-    <span class="nav-icon" title="Search / Enquire" onclick="openOJ()">&#x2315;</span>
-    <span class="nav-icon" title="Toggle theme" onclick="toggleTheme()">&#x25D1;</span>
-    <span class="nav-icon" title="Enquire" onclick="askOJ('I want to place an order or enquire about a piece')">&#x25A2;</span>
-    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    <button class="nav-icon" title="Toggle theme" aria-label="Toggle light or dark theme" onclick="toggleTheme()">&#x25D1;</button>
+    <button class="burger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -252,19 +250,14 @@
   <div class="hero-content wrap" style="grid-column:unset;max-width:none">
     <span class="eyebrow">Modern Luxury Native Wear &middot; Lekki, Lagos</span>
     <h1 class="display">Heritage,<br>tailored for the<br><em>modern man.</em></h1>
-    <p class="lead">Agbada, jalabia, kaftans and suits — crafted with rich fabric and quiet detail, for the days that matter most.</p>
+    <p class="lead">Agbada, jalabia, kaftans and suits, crafted with rich fabric and quiet detail for the days that matter most.</p>
     <div class="hero-cta">
-      <a href="collections.html" class="btn btn-solid">Shop Collections</a>
-      <a href="made-to-measure.html" class="btn btn-ghost">Book a Fitting</a>
+      <a href="/collections" class="btn btn-solid">Shop Collections</a>
+      <a href="/made-to-measure" class="btn btn-ghost">Book a Fitting</a>
     </div>
   </div>
   <div class="hero-media">
-    <img src="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/xuieschu0h-1779309136377.jpeg" alt="OJ Clothings Agbada" loading="eager">
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="n">5.0&#9733;</div><div class="l">Google Rating</div></div>
-      <div class="hero-stat"><div class="n">31K</div><div class="l">Instagram</div></div>
-      <div class="hero-stat"><div class="n">2</div><div class="l">Lekki Stores</div></div>
-    </div>
+    <img src="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/xuieschu0h-1779309136377.jpeg" alt="Blue ceremonial agbada by OJ Clothings" loading="eager" fetchpriority="high">
   </div>
   <div class="scrollcue">Scroll</div>
 </section>
@@ -277,7 +270,7 @@
         <span class="eyebrow">New In</span>
         <h2 class="display">Featured pieces.</h2>
       </div>
-      <a href="collections.html" class="btn btn-ghost">View All &#x2192;</a>
+      <a href="/collections" class="btn btn-ghost">View All &#x2192;</a>
     </div>
     <div class="prod-grid stagger">
       <div class="prod reveal" data-id="agbada-blue" onclick="openProduct(this)">
@@ -285,7 +278,7 @@
           <img src="https://qchvsaqdpwsicklrmfux.supabase.co/storage/v1/object/public/product-images/xuieschu0h-1779309136377.jpeg" alt="Agbada Blue" loading="lazy">
           <div class="tag custom">Made-to-Measure</div>
         </div>
-        <div class="pn">Agbada &mdash; Blue</div>
+        <div class="pn">Blue Agbada</div>
         <div class="pp">From &#x20A6;850,000</div>
         <div class="plink">Enquire &#x2192;</div>
       </div>
@@ -319,10 +312,10 @@
     </div>
     <div class="cat-strip reveal">
       <span>Shop by collection</span>
-      <a href="collections.html?cat=agbada">Agbada</a>
-      <a href="collections.html?cat=jalabia">Al-Turath Jalabia</a>
-      <a href="collections.html?cat=kaftan">Kaftans</a>
-      <a href="collections.html?cat=suits">Suits</a>
+      <a href="/collections?cat=agbada">Agbada</a>
+      <a href="/collections?cat=jalabia">Al-Turath Jalabia</a>
+      <a href="/collections?cat=kaftan">Kaftans</a>
+      <a href="/collections?cat=suits">Suits</a>
     </div>
   </div>
 </section>
@@ -335,12 +328,12 @@
     <h2 class="display">Made to your<br><em style="color:var(--champagne-soft)">exact measure.</em></h2>
     <p class="lead">Every stitch placed with intent. Choose your fabric, share your measurements, and let our tailors do the rest.</p>
     <div class="mtm-steps">
-      <div class="mtm-step"><div class="k">01 &mdash; Consult</div><div class="v">Fabric &amp; design</div></div>
-      <div class="mtm-step"><div class="k">02 &mdash; Measure</div><div class="v">In-store or virtual</div></div>
-      <div class="mtm-step"><div class="k">03 &mdash; Craft</div><div class="v">Hand-finished</div></div>
-      <div class="mtm-step"><div class="k">04 &mdash; Deliver</div><div class="v">To your door</div></div>
+      <div class="mtm-step"><div class="k">01 &middot; Consult</div><div class="v">Fabric &amp; design</div></div>
+      <div class="mtm-step"><div class="k">02 &middot; Measure</div><div class="v">In-store or virtual</div></div>
+      <div class="mtm-step"><div class="k">03 &middot; Craft</div><div class="v">Hand-finished</div></div>
+      <div class="mtm-step"><div class="k">04 &middot; Deliver</div><div class="v">To your door</div></div>
     </div>
-    <a href="made-to-measure.html" class="btn btn-solid">Start the Process</a>
+    <a href="/made-to-measure" class="btn btn-solid">Start the Process</a>
   </div>
 </section>
 
@@ -356,9 +349,9 @@
           <div class="stat"><div class="big">2</div><div class="lab">Lekki Stores</div></div>
         </div>
         <blockquote class="quote">&ldquo;OJ Clothings gave me the <span class="mk">most impeccable</span> agbada I&rsquo;ve ever worn. Absolute precision in every stitch.&rdquo;</blockquote>
-        <p class="quote-by">— A.B., Lagos &middot; Wedding client</p>
+        <p class="quote-by">A.B., Lagos &middot; Wedding client</p>
         <div style="margin-top:32px">
-          <a href="https://www.instagram.com/o.j_clothing/" target="_blank" class="btn btn-ghost" style="margin-top:10px">Follow @o.j_clothing &#x2192;</a>
+          <a href="https://www.instagram.com/o.j_clothing/" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:10px">Follow @o.j_clothing &#x2192;</a>
         </div>
       </div>
       <div class="reveal-right">
@@ -390,46 +383,45 @@
           <img src="assets/img/logo.jpg" alt="OJ Clothings" class="logo-img loaded">
           <span class="name">OJ Clothings</span>
         </div>
-        <p class="foot-desc">Modern luxury native wear from the heart of Lekki, Lagos. Agbada, jalabia, kaftans and tailored suits — crafted for every moment that matters.</p>
+        <p class="foot-desc">Modern luxury native wear from Lekki, Lagos. Agbada, jalabia, kaftans and tailored suits, crafted for every moment that matters.</p>
         <div class="foot-social">
-          <a href="https://www.instagram.com/o.j_clothing/" target="_blank">Instagram</a>
-          <a href="https://www.tiktok.com/@oj_clothings" target="_blank">TikTok</a>
-          <a href="https://www.snapchat.com/add/ojclothings" target="_blank">Snapchat</a>
+          <a href="https://www.instagram.com/o.j_clothing/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@oj_clothings" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.snapchat.com/add/ojclothings" target="_blank" rel="noopener">Snapchat</a>
         </div>
       </div>
       <div class="foot">
         <h4>Shop</h4>
         <ul>
-          <li><a href="collections.html?cat=agbada">Agbada</a></li>
-          <li><a href="collections.html?cat=jalabia">Jalabia</a></li>
-          <li><a href="collections.html?cat=kaftan">Kaftans</a></li>
-          <li><a href="collections.html?cat=suits">Suits</a></li>
-          <li><a href="made-to-measure.html">Made-to-Measure</a></li>
+          <li><a href="/collections?cat=agbada">Agbada</a></li>
+          <li><a href="/collections?cat=jalabia">Jalabia</a></li>
+          <li><a href="/collections?cat=kaftan">Kaftans</a></li>
+          <li><a href="/collections?cat=suits">Suits</a></li>
+          <li><a href="/made-to-measure">Made-to-Measure</a></li>
         </ul>
       </div>
       <div class="foot">
-        <h4>Help</h4>
+        <h4>Company</h4>
         <ul>
-          <li><a href="https://wa.me/2349167728000" target="_blank">WhatsApp Us</a></li>
-          <li><a href="stores.html">Our Stores</a></li>
-          <li><a href="about.html">About OJ</a></li>
-          <li><a href="careers.html">Careers</a></li>
+          <li><a href="/about">About OJ</a></li>
+          <li><a href="/stores">Our Stores</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="https://wa.me/2349167728000" target="_blank" rel="noopener">WhatsApp Us</a></li>
           <li><a href="mailto:info@ojclothing.com">info@ojclothing.com</a></li>
         </ul>
       </div>
       <div class="foot">
-        <h4>Stay in the loop</h4>
+        <h4>Stay in the Loop</h4>
         <p style="font-size:13px;color:var(--muted);margin-bottom:4px">New collections, first access, stories.</p>
         <div class="news">
-          <input type="email" placeholder="Your email">
-          <button onclick="askOJ('I want to join the OJ newsletter')">Join</button>
+          <input type="email" placeholder="Your email" aria-label="Email address" autocomplete="email">
+          <button onclick="joinNewsletter(this)">Join</button>
         </div>
-        <p style="font-size:11px;color:var(--muted);margin-top:12px">&#x2708; Ships Worldwide</p>
       </div>
     </div>
     <div class="foot-bottom">
       <p>&copy; 2026 OJ Clothings. All rights reserved.</p>
-      <p>Lekki, Lagos &middot; Nigeria</p>
+      <p>Lekki, Lagos, Nigeria &middot; Ships Worldwide</p>
       <div style="display:flex;gap:20px">
         <a href="tel:+2349167728000">+234 916 772 8000</a>
         <a href="tel:+2347034958410">+234 703 495 8410</a>
@@ -458,7 +450,7 @@
     <button class="x" onclick="closeOJ()">&#x2715;</button>
   </div>
   <div class="oj-body">
-    <div class="msg oj">Welcome to OJ Clothings. I&rsquo;m here to help you find the perfect piece — whether it&rsquo;s ready-to-wear or fully bespoke.</div>
+    <div class="msg oj">Welcome to OJ Clothings. I&rsquo;m here to help you find the perfect piece, whether it&rsquo;s ready-to-wear or fully bespoke.</div>
     <div class="msg oj">What can I help you with today?</div>
   </div>
   <div class="oj-chips">
@@ -473,21 +465,21 @@
     <input type="text" placeholder="Ask about collections, sizing, orders…">
     <button onclick="sendOJ()">Send</button>
   </div>
-  <p class="oj-note">For orders &amp; custom quotes, <a href="https://wa.me/2349167728000" target="_blank">chat our team on WhatsApp</a>.</p>
+  <p class="oj-note">For orders &amp; custom quotes, <a href="https://wa.me/2349167728000" target="_blank" rel="noopener">chat our team on WhatsApp</a>.</p>
 </div>
 
 <!-- MOBILE NAV -->
 <div class="mob-overlay"></div>
 <div class="mob-nav">
-  <button class="mob-close">&#x2715;</button>
+  <button class="mob-close" aria-label="Close menu">&#x2715;</button>
   <ul>
-    <li><a href="collections.html">Collections</a></li>
-    <li><a href="made-to-measure.html">Made-to-Measure</a></li>
-    <li><a href="stores.html">Our Stores</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="mailto:info@ojclothing.com">Contact</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/collections">Collections</a></li>
+    <li><a href="/made-to-measure">Made-to-Measure</a></li>
+    <li><a href="/stores">Our Stores</a></li>
+    <li><a href="/about">About</a></li>
   </ul>
-  <a href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20book%20a%20fitting" target="_blank" class="btn btn-solid mob-wa">Book a Fitting</a>
+  <a href="https://wa.me/2349167728000?text=Hello%20OJ%20Clothings%2C%20I%27d%20like%20to%20book%20a%20fitting" target="_blank" rel="noopener" class="btn btn-solid mob-wa">Book a Fitting</a>
 </div>
 
 <script src="assets/js/main.js"></script>
